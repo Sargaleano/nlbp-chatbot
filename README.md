@@ -17,8 +17,7 @@ NLBP Chatbot is a research prototype built to test exactly that — it talks wit
 pain patients the way a person would, then checks whether what it hears lines up with the
 DN4-interview, the self-reported half of a validated neuropathic-pain questionnaire.
 
-No checklists read aloud to the patient. No diagnosis, ever. Every red-flag symptom gets a
-fixed, non-negotiable safety response instead of an AI-generated one.
+No checklists read aloud to the patient. No diagnosis, clearly stated. Every red-flag symptom gets an inmediate alert.
 
 ## What it looks like
 
@@ -28,12 +27,12 @@ fixed, non-negotiable safety response instead of an AI-generated one.
 <p align="center"><sub>The patient's whole experience: one open question, then a natural conversation.</sub></p>
 
 <p align="center">
-  <img src="assets/images/screenshot-dashboard.jpg" width="420" alt="Admin sessions dashboard" />
+  <img src="assets/images/dashboard.jpg" width="420" alt="Admin sessions dashboard" />
 </p>
 <p align="center"><sub>The researcher's dashboard — every session's status, progress, and consent at a glance.</sub></p>
 
 <p align="center">
-  <img src="assets/images/screenshot-ai-eval.jpg" width="420" alt="Clinical vs chatbot comparison panel" />
+  <img src="assets/images/ai-eval.jpg" width="420" alt="Clinical vs chatbot comparison panel" />
 </p>
 <p align="center"><sub>Clinical reference data and the chatbot's own (hidden-by-default) evaluation, side by side.</sub></p>
 
