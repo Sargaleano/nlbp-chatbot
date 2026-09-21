@@ -48,7 +48,7 @@ No checklists read aloud to the patient. No diagnosis, clearly stated. Every red
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-username>/nlbp-chatbot.git
+git clone https://github.com/sargaleano/nlbp-chatbot.git
 cd nlbp-chatbot
 npm install
 npm run setup     # creates .env with a generated admin password
