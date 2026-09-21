@@ -66,8 +66,13 @@ security design, and what's deliberately out of scope for this Phase 1 — lives
 - **[`docs/guia-usuario-nlbp-chatbot.pdf`](./docs/guia-usuario-nlbp-chatbot.pdf)** — user guide (Spanish), for whoever runs sessions day to day.
 - **[`docs/especificacion-tecnica-nlbp-chatbot.pdf`](./docs/especificacion-tecnica-nlbp-chatbot.pdf)** — technical specification (Spanish), for anyone extending, auditing, or replicating this.
 
-## Status & license
+## License
 
-Phase 1 research prototype. **Not a diagnostic device, not for clinical use.** MIT-licensed
-(see [`LICENSE`](./LICENSE)) — replicate or adapt it for your own study; see
+MIT-licensed (see [`LICENSE`](./LICENSE)) — replicate or adapt it for your own study; see
 [`CONTRIBUTING.md`](./CONTRIBUTING.md) if you'd like to send changes back.
+
+## Contact
+
+NLBP Chatbot — v1.0
+© Sergio Rojas-Galeano — Universidad Distrital Francisco José de Caldas
+Email: srojas@udistrital.edu.co
