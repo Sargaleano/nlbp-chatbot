@@ -1,0 +1,36 @@
+{
+  "name": "nlbp-chatbot",
+  "version": "1.0.0",
+  "description": "Research prototype: LLM-based chatbot interview for low back pain patients, compared against the DN4-interview.",
+  "license": "MIT",
+  "author": "Sergio Rojas-Galeano <srojas@udistrital.edu.co>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sargaleano/nlbp-chatbot.git"
+  },
+  "keywords": [
+    "nlbp",
+    "dn4",
+    "chatbot",
+    "neuropathic-pain",
+    "low-back-pain",
+    "research-prototype",
+    "claude"
+  ],
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "setup": "node lib/setup.js",
+    "reset-password": "node lib/resetPassword.js",
+    "set-api-key": "node lib/setApiKey.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.126.0",
+    "cookie-session": "^2.1.0",
+    "express": "^4.21.1"
+  }
+}

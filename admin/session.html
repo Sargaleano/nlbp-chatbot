@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NLBP Chatbot — Ficha del paciente</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="admin-topbar">
+    <div class="brand">
+      NLBP · Chatbot Inteligente
+      <small>Estudio de correspondencia entre chatbot inteligente de entrevista para NLBP (Nonspecific Low Back Pain, dolor lumbar no específico) en lenguaje natural e instrumento DN4-interview</small>
+    </div>
+    <button id="logout-btn" type="button" class="btn-info">Salir</button>
+  </div>
+
+  <div class="admin-wrap">
+    <div class="detail-sticky-header">
+      <a href="/admin" class="back-link">&larr; Volver a las sesiones</a>
+      <h1 id="session-title">Ficha del paciente</h1>
+    </div>
+
+    <div class="card section-card">
+      <h2 style="margin-top:0;">Resumen</h2>
+      <p id="summary-line"></p>
+      <p>
+        <span class="id-copy-group mono">
+          <span id="full-id-text"></span>
+          <button type="button" class="copy-btn" id="copy-id-btn">Copiar</button>
+        </span>
+      </p>
+      <div id="red-flag-banner" style="display:none; background:#fbe6e4; color:#c0362c; padding:12px 16px; border-radius:10px; margin-bottom:12px; font-weight:700;"></div>
+      <div class="toggle-with-label" style="margin-bottom:12px;">
+        <label class="toggle-switch" title="Incluir/excluir esta sesión de la exportación CSV (reversible)">
+          <input type="checkbox" id="exclude-toggle-checkbox" />
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-state-text" id="exclude-toggle-label"></span>
+      </div>
+      <h3>Estado de los dominios clínicos</h3>
+      <div class="slot-grid" id="slot-grid"></div>
+    </div>
+
+    <div class="card section-card">
+      <h2 style="margin-top:0;">Transcripción (solo lectura)</h2>
+      <div id="transcript-view" class="messages" style="max-height:400px; overflow-y:auto; border:1px solid var(--color-border); border-radius:10px;"></div>
+    </div>
+
+    <div class="card section-card">
+      <h2 style="margin-top:0;">Resumen DN4-interview</h2>
+      <p style="font-size:0.9rem; color:var(--color-ink-soft);">
+        El panel Clínico se completa manualmente después de administrar el DN4-interview por separado
+        y contar con la clasificación del clínico ciego — es el estándar de referencia independiente del
+        estudio, y nunca se pre-completa a partir de la salida del chatbot. El panel Chatbot incluye un
+        puntaje automático (conteo de dominios positivos) y, solo si usted lo solicita, una evaluación
+        generada por IA a partir de la conversación completa; ambas cosas son exploratorias y no
+        constituyen una clasificación validada.
+      </p>
+      <div class="subpanel-grid">
+        <div class="subpanel">
+          <h3>Clínico</h3>
+          <div class="field-row">
+            <label for="dn4-score">Puntaje DN4-interview (0–7)</label>
+            <input type="number" id="dn4-score" min="0" max="7" />
+          </div>
+          <div class="field-row">
+            <label for="ref-class">Clasificación clínica</label>
+            <select id="ref-class">
+              <option value="">-- sin definir --</option>
+              <option value="neuropathic">Neuropático</option>
+              <option value="nociceptive">Nociceptivo</option>
+              <option value="ambiguous">Ambiguo</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <label for="ref-notes">Notas</label>
+            <textarea id="ref-notes" rows="4"></textarea>
+          </div>
+          <button id="save-reference-btn">Guardar datos clínicos</button>
+          <span id="save-status" style="margin-left:10px; color:var(--color-ok); font-weight:600;"></span>
+        </div>
+        <div class="subpanel chatbot-subpanel">
+          <h3>Chatbot</h3>
+          <div class="field-row">
+            <label>Puntaje DN4 (chatbot)</label>
+            <div class="readonly-field" id="chatbot-score"></div>
+          </div>
+          <div class="field-row">
+            <label>
+              Clasificación (tentativa)
+              <button type="button" id="toggle-classification-btn" class="eye-btn" title="Mostrar" hidden></button>
+            </label>
+            <div class="readonly-field" id="chatbot-classification"></div>
+          </div>
+          <div class="field-row">
+            <label>
+              Explicación
+              <button type="button" id="toggle-explanation-btn" class="eye-btn" title="Mostrar" hidden></button>
+            </label>
+            <div class="readonly-field" id="chatbot-explanation" style="min-height:5.5em; white-space:pre-wrap;"></div>
+          </div>
+          <div id="chatbot-classification-generate">
+            <button type="button" id="generate-classification-btn" class="btn-small btn-secondary">Generar evaluación con IA</button>
+            <span id="generate-status" style="margin-left:8px; font-size:0.82rem; color:var(--color-ink-soft);"></span>
+          </div>
+          <div id="chatbot-classification-meta" style="font-size:0.76rem; color:var(--color-ink-soft); margin-top:4px; display:none;">
+            <span id="chatbot-classification-generated-at"></span> ·
+            <a href="#" id="regenerate-classification-btn">Regenerar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-footer">
+      <span></span>
+      <span class="footer-links">
+        <a href="#" id="help-btn">Ayuda</a>
+        <a href="#" id="about-btn">Acerca de</a>
+      </span>
+    </div>
+  </div>
+
+  <script>window.HELP_CONTEXT = 'session';</script>
+  <script src="/admin-assets/about.js"></script>
+  <script src="/admin-assets/help.js"></script>
+  <script src="/admin-assets/session.js"></script>
+</body>
+</html>

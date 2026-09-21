@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Entrevista sobre el dolor lumbar</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <div id="consent-screen" class="screen" hidden>
+    <div class="card">
+      <div class="brand-mark">NLBP · Estudio de investigación</div>
+      <h1>Consentimiento informado</h1>
+      <p>
+        Antes de comenzar, por favor lea lo siguiente:
+      </p>
+      <ul>
+        <li>Esta conversación es parte de un estudio de investigación sobre el dolor lumbar.</li>
+        <li>Usted conversará con un asistente automatizado (chatbot); no es un profesional de salud y no le dará un diagnóstico ni consejo médico.</li>
+        <li>El contenido de la conversación se envía a un servicio externo para generar las respuestas del chatbot, pero nunca se envía su nombre ni información que lo identifique.</li>
+        <li>Su participación es voluntaria y puede detenerse en cualquier momento avisando a la persona encargada de la sesión.</li>
+        <li>Sus datos se identifican únicamente con un código de estudio, no con su nombre.</li>
+      </ul>
+      <label class="consent-check">
+        <input type="checkbox" id="consent-checkbox" />
+        He leído y entiendo la información anterior, y acepto participar.
+      </label>
+      <button id="consent-continue" disabled>Continuar</button>
+    </div>
+  </div>
+
+  <div id="chat-screen" class="screen" hidden>
+    <div class="chat-container">
+      <div class="chat-header">
+        Entrevista sobre el dolor
+        <span class="subtitle">Estudio de investigación sobre dolor lumbar — conversación breve y confidencial, sin diagnóstico ni consejo médico.</span>
+      </div>
+      <div id="messages" class="messages"></div>
+      <form id="chat-form" class="chat-input-row">
+        <input
+          id="chat-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Escriba su respuesta aquí..."
+        />
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="chat-closed-row" class="chat-input-row" hidden>
+        <span style="flex:1; color:var(--color-ink-soft); font-size:0.9rem;">La entrevista ha terminado.</span>
+        <button type="button" id="close-chat-btn" class="btn-info">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="closing-screen" class="screen" hidden>
+    <div class="card">
+      <h1>Gracias</h1>
+      <p id="closing-text">La entrevista ha terminado.</p>
+      <p><strong>Por favor avise a la persona encargada de la sesión.</strong></p>
+    </div>
+  </div>
+
+  <div id="loading-screen" class="screen">
+    <div class="card"><p>Cargando...</p></div>
+  </div>
+
+  <div id="not-found-screen" class="screen" hidden>
+    <div class="card">
+      <h1>Sesión no encontrada</h1>
+      <p>Este enlace no es válido.</p>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

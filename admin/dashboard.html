@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NLBP Chatbot — Panel de sesiones</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="admin-topbar">
+    <div class="brand">
+      NLBP · Chatbot Inteligente
+      <small>Estudio de correspondencia entre chatbot inteligente de entrevista para NLBP (Nonspecific Low Back Pain, dolor lumbar no específico) en lenguaje natural e instrumento DN4-interview</small>
+    </div>
+    <button id="logout-btn" type="button" class="btn-info">Salir</button>
+  </div>
+
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <h1>Sesiones de pacientes</h1>
+      <a href="/admin/export.csv"><button type="button">Exportar CSV</button></a>
+    </div>
+    <p style="color:var(--color-ink-soft); margin-top:-10px; margin-bottom:20px; width:100%;">
+      El chatbot conversa abiertamente con cada paciente para identificar los mismos conceptos clínicos
+      del DN4-interview (ardor, frío doloroso, descargas eléctricas, hormigueo, alfileres, adormecimiento
+      y picazón) sin leerlo como cuestionario. Los resultados se comparan luego con la clasificación de
+      un clínico evaluador.
+    </p>
+
+    <fieldset class="toolbar-fieldset">
+      <legend>Nuevo paciente</legend>
+      <div class="toolbar">
+        <label>Consentimiento:</label>
+        <select id="consent-mode-select">
+          <option value="onscreen" selected>Solicitar al paciente en pantalla</option>
+          <option value="external">Ya se obtuvo en papel/verbalmente</option>
+        </select>
+        <button id="new-patient-btn">Crear</button>
+        <div class="search-box">
+          <input type="search" id="search-input" placeholder="Buscar por ID de paciente o ID de sesión..." />
+        </div>
+      </div>
+    </fieldset>
+
+    <div id="new-link-box" style="display:none;">
+      <p><strong>Enlace de la entrevista para este paciente</strong> — anote el ID de paciente en su hoja de consentimiento ahora:</p>
+      <div class="link-box" id="new-link-text"></div>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ID paciente</th>
+            <th>ID de sesión</th>
+            <th>Creado</th>
+            <th>Modificado</th>
+            <th>Consentimiento</th>
+            <th>Estado</th>
+            <th>Inclusión</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="sessions-tbody"></tbody>
+      </table>
+      <div id="empty-state" class="empty-state" style="display:none;">No hay sesiones que coincidan con la búsqueda.</div>
+    </div>
+
+    <div class="dashboard-footer">
+      <span id="totals-label">Total sesiones: 0</span>
+      <span class="footer-links">
+        <a href="#" id="help-btn">Ayuda</a>
+        <a href="#" id="about-btn">Acerca de</a>
+      </span>
+    </div>
+  </div>
+
+  <script>window.HELP_CONTEXT = 'dashboard';</script>
+  <script src="/admin-assets/about.js"></script>
+  <script src="/admin-assets/help.js"></script>
+  <script src="/admin-assets/dashboard.js"></script>
+</body>
+</html>

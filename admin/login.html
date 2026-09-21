@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NLBP Chatbot — Acceso administrador</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="screen">
+    <div class="card">
+      <div class="brand-mark">NLBP · Chatbot Inteligente</div>
+      <h1>Acceso de administrador</h1>
+      <p>Estudio de correspondencia entre chatbot inteligente de entrevista para NLBP (Nonspecific Low Back Pain, dolor lumbar no específico) en lenguaje natural e instrumento DN4-interview.</p>
+      <form id="login-form">
+        <div class="field-row">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required autofocus />
+        </div>
+        <div id="login-error" style="color:#c0362c; margin-bottom: 14px; display:none; font-weight:600;"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <button type="submit">Ingresar</button>
+          <span>
+            <a href="#" id="help-btn" style="font-size:0.82rem; color:var(--color-primary); font-weight:600;">Ayuda</a>
+            <a href="#" id="about-btn" style="font-size:0.82rem; color:var(--color-primary); font-weight:600; margin-left:14px;">Acerca de</a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>window.HELP_CONTEXT = 'login';</script>
+  <script src="/admin-assets/about.js"></script>
+  <script src="/admin-assets/help.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('login-error');
+      errorEl.style.display = 'none';
+      try {
+        const res = await fetch('/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password }),
+        });
+        if (!res.ok) {
+          errorEl.textContent = 'Contraseña incorrecta';
+          errorEl.style.display = 'block';
+          return;
+        }
+        window.location.href = '/admin';
+      } catch (err) {
+        errorEl.textContent = 'No se pudo iniciar sesión. Intente de nuevo.';
+        errorEl.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
